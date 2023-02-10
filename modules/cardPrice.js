@@ -1,4 +1,5 @@
 import { button } from "./button.js";
+
 export const cardPrice = (price_night, price_total) => {
   const cardPrice = document.createElement("div");
   cardPrice.className = "card-price";

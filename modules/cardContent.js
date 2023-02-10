@@ -1,4 +1,5 @@
 import { cardPrice } from "./cardPrice.js";
+
 export const cardContent = (
   title,
   description,

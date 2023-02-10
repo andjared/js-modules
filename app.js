@@ -1,4 +1,5 @@
 import { card } from "./modules/card.js";
+
 const container = document.querySelector(".container");
 const dataUrl = "data.json";
 

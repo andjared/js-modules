@@ -19,5 +19,6 @@ export const cardImageWrapper = (img_url, flag, cloneNode) => {
     imageTopContent(flag),
     slideIndicators
   );
+
   return imageWrapper;
 };
