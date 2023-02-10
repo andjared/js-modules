@@ -1,3 +1,4 @@
+import { card } from "./modules/card.js";
 const dataUrl = "data.json";
 
 const getData = async (url) => {
@@ -9,7 +10,7 @@ const getData = async (url) => {
 const displayData = async () => {
   try {
     const data = await getData(dataUrl);
-    console.log(data);
+    data.map((item) => card(item));
   } catch (error) {
     console.log(error);
   }
