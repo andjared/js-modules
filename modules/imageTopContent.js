@@ -12,7 +12,7 @@ export const imageTopContent = (flag) => {
   }
 
   imageTopContent.append(
-    button("btn-save", svgIcon("../../icons/icon-save.svg#save")),
+    button("btn-save", svgIcon("icons/icon-save.svg#save")),
     cardFlag
   );
 
