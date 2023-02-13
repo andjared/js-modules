@@ -1,7 +1,14 @@
 import { cardImage } from "./cardImage.js";
 import { imageTopContent } from "./imageTopContent.js";
 
-export const cardImageWrapper = (imgUrl, isSuperhost, cloneNode) => {
+export const cardImageWrapper = (imgUrl, isSuperhost) => {
+  const cloneNode = (n, node, parent) => {
+    for (let i = 0; i < n; i++) {
+      const clonedNode = node.cloneNode(true);
+      parent.append(clonedNode);
+    }
+  };
+
   const imageWrapper = document.createElement("div");
   imageWrapper.classList = "card-img stacked";
 
