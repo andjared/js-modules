@@ -1,6 +1,6 @@
 import { button } from "./button.js";
 
-export const cardPrice = (priceNight, priceTotal) => {
+export const cardPrice = ({ priceNight, priceTotal }) => {
   const cardPrice = document.createElement("div");
   cardPrice.className = "card-price";
 
@@ -21,7 +21,11 @@ export const cardPrice = (priceNight, priceTotal) => {
   totalPriceValue.innerText = priceTotal;
   totalPrice.append(totalPriceValue, "total");
 
-  cardPrice.append(nightPrice, priceDivider, button("btn-price", totalPrice));
+  cardPrice.append(
+    nightPrice,
+    priceDivider,
+    button({ className: "btn-price", child: totalPrice })
+  );
 
   return cardPrice;
 };

@@ -1,14 +1,14 @@
 import { cardPrice } from "./cardPrice.js";
 
-export const cardContent = (
+export const cardContent = ({
   title,
   description,
   review,
   beds,
   dates,
   priceNight,
-  priceTotal
-) => {
+  priceTotal,
+}) => {
   const cardContent = document.createElement("div");
   cardContent.className = "card-content";
 
@@ -42,7 +42,7 @@ export const cardContent = (
     cardDescription,
     cardBeds,
     cardDate,
-    cardPrice(priceNight, priceTotal)
+    cardPrice({ priceNight: priceNight, priceTotal: priceTotal })
   );
 
   return cardContent;

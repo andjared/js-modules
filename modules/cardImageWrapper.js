@@ -1,7 +1,7 @@
 import { cardImage } from "./cardImage.js";
 import { imageTopContent } from "./imageTopContent.js";
 
-export const cardImageWrapper = (imgUrl, isSuperhost) => {
+export const cardImageWrapper = ({ imgUrl, isSuperhost }) => {
   const cloneNode = (n, node, parent) => {
     for (let i = 0; i < n; i++) {
       const clonedNode = node.cloneNode(true);
@@ -22,8 +22,8 @@ export const cardImageWrapper = (imgUrl, isSuperhost) => {
   cloneNode(5, indicator, slideIndicators);
 
   imageWrapper.append(
-    cardImage(imgUrl),
-    imageTopContent(isSuperhost),
+    cardImage({ imgUrl: imgUrl }),
+    imageTopContent({ isSuperhost: isSuperhost }),
     slideIndicators
   );
 

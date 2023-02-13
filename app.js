@@ -12,7 +12,7 @@ const getData = async (url) => {
 const displayData = async () => {
   try {
     const data = await getData(dataUrl);
-    data.map((item) => container.append(card(item)));
+    data.map((item) => container.append(card({ data: item })));
   } catch (error) {
     console.log(error);
   }

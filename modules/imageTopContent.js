@@ -1,7 +1,7 @@
 import { button } from "./button.js";
 import { svgIcon } from "./svgIcon.js";
 
-export const imageTopContent = (isSuperhost) => {
+export const imageTopContent = ({ isSuperhost }) => {
   const imageTopContent = document.createElement("div");
   imageTopContent.className = "top-content";
   const superhost = document.createElement("div");
@@ -12,7 +12,10 @@ export const imageTopContent = (isSuperhost) => {
   }
 
   imageTopContent.append(
-    button("btn-save", svgIcon("../../icons/icon-save.svg#save")),
+    button({
+      className: "btn-save",
+      child: svgIcon({ path: "../../icons/icon-save.svg#save" }),
+    }),
     superhost
   );
 
