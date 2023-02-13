@@ -1,6 +1,6 @@
 import { button } from "./button.js";
 
-export const cardPrice = (price_night, price_total) => {
+export const cardPrice = (priceNight, priceTotal) => {
   const cardPrice = document.createElement("div");
   cardPrice.className = "card-price";
 
@@ -8,7 +8,7 @@ export const cardPrice = (price_night, price_total) => {
   nightPrice.className = "price-night";
   const nightPriceValue = document.createElement("span");
   nightPriceValue.className = "price-value";
-  nightPriceValue.innerText = price_night;
+  nightPriceValue.innerText = priceNight;
   nightPrice.append(nightPriceValue, "night");
 
   const priceDivider = document.createElement("span");
@@ -18,7 +18,7 @@ export const cardPrice = (price_night, price_total) => {
   totalPrice.className = "price-total";
   const totalPriceValue = document.createElement("span");
   totalPriceValue.className = "price-value";
-  totalPriceValue.innerText = price_total;
+  totalPriceValue.innerText = priceTotal;
   totalPrice.append(totalPriceValue, "total");
 
   cardPrice.append(nightPrice, priceDivider, button("btn-price", totalPrice));

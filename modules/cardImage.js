@@ -1,6 +1,6 @@
-export const cardImage = (img_url) => {
+export const cardImage = (imgUrl) => {
   const cardImage = document.createElement("img");
-  cardImage.src = img_url;
+  cardImage.src = imgUrl;
 
   return cardImage;
 };

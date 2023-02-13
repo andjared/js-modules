@@ -6,8 +6,8 @@ export const cardContent = (
   review,
   beds,
   dates,
-  price_night,
-  price_total
+  priceNight,
+  priceTotal
 ) => {
   const cardContent = document.createElement("div");
   cardContent.className = "card-content";
@@ -42,7 +42,7 @@ export const cardContent = (
     cardDescription,
     cardBeds,
     cardDate,
-    cardPrice(price_night, price_total)
+    cardPrice(priceNight, priceTotal)
   );
 
   return cardContent;

@@ -1,6 +1,6 @@
-export const button = (btnClassName, child) => {
+export const button = (className, child) => {
   const btn = document.createElement("button");
-  btn.className = btnClassName;
+  btn.className = className;
   btn.append(child);
 
   return btn;

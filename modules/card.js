@@ -18,23 +18,15 @@ export const card = (data) => {
     review,
     beds,
     dates,
-    price_night,
-    price_total,
-    img_url,
-    flag,
+    priceNight,
+    priceTotal,
+    imgUrl,
+    isSuperhost,
   } = data;
   //   append nested elements to card & pass needed properties
   card.append(
-    cardImageWrapper(img_url, flag, cloneNode),
-    cardContent(
-      title,
-      description,
-      review,
-      beds,
-      dates,
-      price_night,
-      price_total
-    )
+    cardImageWrapper(imgUrl, isSuperhost, cloneNode),
+    cardContent(title, description, review, beds, dates, priceNight, priceTotal)
   );
 
   return card;
