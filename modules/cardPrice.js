@@ -1,4 +1,6 @@
 import { button } from "./button.js";
+import styles from "../styles/cardPrice.css" assert { type: "css" };
+document.adoptedStyleSheets = [...document.adoptedStyleSheets, styles];
 
 export const cardPrice = ({ priceNight, priceTotal }) => {
   const cardPrice = document.createElement("div");

@@ -1,5 +1,7 @@
 import { cardContent } from "./cardContent.js";
 import { cardImageWrapper } from "./cardImageWrapper.js";
+import styles from "../styles/card.css" assert { type: "css" };
+document.adoptedStyleSheets = [...document.adoptedStyleSheets, styles];
 
 export const card = ({ data }) => {
   const card = document.createElement("div");

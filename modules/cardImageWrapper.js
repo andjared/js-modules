@@ -1,5 +1,7 @@
 import { cardImage } from "./cardImage.js";
 import { imageTopContent } from "./imageTopContent.js";
+import styles from "../styles/cardImageWrapper.css" assert { type: "css" };
+document.adoptedStyleSheets = [...document.adoptedStyleSheets, styles];
 
 export const cardImageWrapper = ({ imgUrl, isSuperhost }) => {
   const cloneNode = (n, node, parent) => {

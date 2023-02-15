@@ -1,5 +1,7 @@
 import { button } from "./button.js";
 import { svgIcon } from "./svgIcon.js";
+import styles from "../styles/imageTopContent.css" assert { type: "css" };
+document.adoptedStyleSheets = [...document.adoptedStyleSheets, styles];
 
 export const imageTopContent = ({ isSuperhost }) => {
   const imageTopContent = document.createElement("div");

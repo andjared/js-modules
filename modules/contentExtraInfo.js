@@ -1,3 +1,6 @@
+import styles from "../styles/contentExtraInfo.css" assert { type: "css" };
+document.adoptedStyleSheets = [...document.adoptedStyleSheets, styles];
+
 const cardDescription = ({ description }) => {
   const desscriptionInfo = document.createElement("p");
   desscriptionInfo.className = "card-description";

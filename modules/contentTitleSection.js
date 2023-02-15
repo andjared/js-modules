@@ -1,3 +1,6 @@
+import styles from "../styles/contentTitleSection.css" assert { type: "css" };
+document.adoptedStyleSheets = [...document.adoptedStyleSheets, styles];
+
 const cardTitle = ({ title }) => {
   const cardTitle = document.createElement("h2");
   cardTitle.className = "card-title";

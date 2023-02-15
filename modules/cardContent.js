@@ -1,6 +1,8 @@
 import { cardPrice } from "./cardPrice.js";
 import { cardReview, cardTitle } from "./contentTitleSection.js";
 import { cardDescription, cardBeds, cardDate } from "./contentExtraInfo.js";
+import styles from "../styles/cardContent.css" assert { type: "css" };
+document.adoptedStyleSheets = [...document.adoptedStyleSheets, styles];
 
 export const cardContent = ({
   title,
