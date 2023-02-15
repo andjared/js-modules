@@ -16,7 +16,7 @@ export const imageTopContent = ({ isSuperhost }) => {
   imageTopContent.append(
     button({
       className: "btn-save",
-      child: svgIcon({ path: "../../icons/icon-save.svg#save" }),
+      child: svgIcon({ path: "./icons/icon-save.svg#save" }),
     }),
     superhost
   );
