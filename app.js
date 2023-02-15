@@ -1,4 +1,4 @@
-import { card } from "./modules/card.js";
+import { card } from "./components/card/card.js";
 
 const container = document.querySelector(".container");
 const dataUrl = "data.json";
@@ -12,7 +12,9 @@ const getData = async (url) => {
 const displayData = async () => {
   try {
     const data = await getData(dataUrl);
-    data.map((item) => container.append(card({ data: item })));
+    data.map((item) => {
+      container.append(card({ ...item }));
+    });
   } catch (error) {
     console.log(error);
   }

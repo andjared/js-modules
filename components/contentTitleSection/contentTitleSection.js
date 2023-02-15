@@ -1,4 +1,4 @@
-import styles from "../styles/contentTitleSection.css" assert { type: "css" };
+import styles from "./contentTitleSection.css" assert { type: "css" };
 document.adoptedStyleSheets = [...document.adoptedStyleSheets, styles];
 
 const cardTitle = ({ title }) => {

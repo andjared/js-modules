@@ -1,4 +1,4 @@
-import styles from "../styles/contentExtraInfo.css" assert { type: "css" };
+import styles from "./contentExtraInfo.css" assert { type: "css" };
 document.adoptedStyleSheets = [...document.adoptedStyleSheets, styles];
 
 const cardDescription = ({ description }) => {

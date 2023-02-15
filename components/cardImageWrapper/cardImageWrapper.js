@@ -1,6 +1,6 @@
-import { cardImage } from "./cardImage.js";
-import { imageTopContent } from "./imageTopContent.js";
-import styles from "../styles/cardImageWrapper.css" assert { type: "css" };
+import { cardImage } from "../cardImage/cardImage.js";
+import { imageTopContent } from "../imageTopContent/imageTopContent.js";
+import styles from "./cardImageWrapper.css" assert { type: "css" };
 document.adoptedStyleSheets = [...document.adoptedStyleSheets, styles];
 
 export const cardImageWrapper = ({ imgUrl, isSuperhost }) => {
@@ -24,8 +24,8 @@ export const cardImageWrapper = ({ imgUrl, isSuperhost }) => {
   cloneNode(5, indicator, slideIndicators);
 
   imageWrapper.append(
-    cardImage({ imgUrl: imgUrl }),
-    imageTopContent({ isSuperhost: isSuperhost }),
+    cardImage({ imgUrl }),
+    imageTopContent({ isSuperhost }),
     slideIndicators
   );
 

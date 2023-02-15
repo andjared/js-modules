@@ -1,6 +1,6 @@
-import { button } from "./button.js";
-import { svgIcon } from "./svgIcon.js";
-import styles from "../styles/imageTopContent.css" assert { type: "css" };
+import { button } from "../button/button.js";
+import { svgIcon } from "../svgIcon/svgIcon.js";
+import styles from "./imageTopContent.css" assert { type: "css" };
 document.adoptedStyleSheets = [...document.adoptedStyleSheets, styles];
 
 export const imageTopContent = ({ isSuperhost }) => {
