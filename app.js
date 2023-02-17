@@ -1,6 +1,5 @@
-import { card } from "./components/card/card.js";
-
-const container = document.querySelector(".container");
+import { cardsSection } from "./components/cardsSection/cardsSection.js";
+import { search } from "./components/search/search.js";
 const dataUrl = "data.json";
 
 const getData = async (url) => {
@@ -12,9 +11,7 @@ const getData = async (url) => {
 const displayData = async () => {
   try {
     const data = await getData(dataUrl);
-    data.map((item) => {
-      container.append(card({ ...item }));
-    });
+    document.body.append(search({ data }), cardsSection({ data }));
   } catch (error) {
     console.log(error);
   }

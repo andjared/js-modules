@@ -29,6 +29,10 @@ body {
   font-family: "Montserrat", sans-serif;
   font-size: 15px;
   line-height: 19px;
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  /* justify-content: center; */
 }
 
 img {
@@ -39,22 +43,4 @@ img {
 button {
   outline: 0;
   cursor: pointer;
-}
-
-.container {
-  height: 100%;
-  padding: var(--space-xxl2) var(--space-xxxl);
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  grid-auto-rows: 1fr;
-  row-gap: var(--space-xxxl);
-  column-gap: var(--space-xl);
-  place-content: center;
-  margin-inline: auto;
-}
-
-@media screen and (max-width: 1080px) {
-  .container {
-    padding: var(--space-xl2) var(--space-xxl);
-  }
 }
