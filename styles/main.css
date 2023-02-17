@@ -24,16 +24,16 @@
   --space-xxl: calc(8 * var(--space-unit));
   --space-xxl2: calc(9 * var(--space-unit));
   --space-xxxl: calc(10 * var(--space-unit));
+  --space-xxxl2: calc(2 * var(--space-xxxl));
 }
 
 body {
   font-family: "Montserrat", sans-serif;
   font-size: 15px;
   line-height: 19px;
+  position: relative;
   display: flex;
   flex-direction: column;
-  /* align-items: center; */
-  /* justify-content: center; */
 }
 
 img {

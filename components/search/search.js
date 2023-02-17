@@ -6,8 +6,11 @@ import styles from "./search.css" assert { type: "css" };
 document.adoptedStyleSheets = [...document.adoptedStyleSheets, styles];
 
 export const search = ({ data }) => {
-  const wrapper = document.createElement("div");
-  wrapper.className = "wrapper";
+  const header = document.createElement("header");
+  header.className = "header";
+
+  const searchWrapper = document.createElement("div");
+  searchWrapper.className = "search-wrapper";
 
   const searchPlace = document.createElement("div");
   searchPlace.className = "search-place";
@@ -20,13 +23,15 @@ export const search = ({ data }) => {
   placeInput.placeholder = "Search destinations";
   searchPlace.append(placeLabel, placeInput);
 
-  wrapper.append(
+  searchWrapper.append(
     searchPlace,
     button({
       className: "btn-search",
       child: svgIcon({ path: "./icons/icon-search.svg#search" }),
     })
   );
+
+  header.append(searchWrapper);
 
   const filterData = (searchValue) => {
     const filtered = data.filter((item) =>
@@ -48,5 +53,5 @@ export const search = ({ data }) => {
 
   placeInput.addEventListener("keyup", (e) => filterData(e.target.value));
 
-  return wrapper;
+  return header;
 };
