@@ -1,0 +1,5 @@
+.not-found {
+  display: flex;
+  justify-content: center;
+  padding: var(--space-xxl2) var(--space-xxxl);
+}

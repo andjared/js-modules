@@ -29,7 +29,7 @@
 .btn-search {
   border: 0;
   border-radius: 50%;
-  background-color: #ff385c;
+  background-color: var(--clr-search-btn);
   padding: var(--space-md);
   color: var(--clr-bg-light);
   font-size: 16px;

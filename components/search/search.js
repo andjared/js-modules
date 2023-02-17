@@ -1,5 +1,7 @@
 import { button } from "../button/button.js";
 import { svgIcon } from "../svgIcon/svgIcon.js";
+import { cardsSection } from "../cardsSection/cardsSection.js";
+import { notFound } from "../notFound/notFound.js";
 import styles from "./search.css" assert { type: "css" };
 document.adoptedStyleSheets = [...document.adoptedStyleSheets, styles];
 
@@ -25,6 +27,26 @@ export const search = ({ data }) => {
       child: svgIcon({ path: "./icons/icon-search.svg#search" }),
     })
   );
+
+  const filterData = (searchValue) => {
+    const filtered = data.filter((item) =>
+      item.title.toLowerCase().includes(searchValue.toLowerCase())
+    );
+
+    const gridContainer = document.querySelector(".grid-container");
+
+    if (filtered.length) {
+      gridContainer
+        ? gridContainer.replaceWith(cardsSection({ data: filtered }))
+        : document
+            .querySelector(".not-found")
+            .replaceWith(cardsSection({ data: filtered }));
+    } else {
+      gridContainer?.replaceWith(notFound());
+    }
+  };
+
+  placeInput.addEventListener("keyup", (e) => filterData(e.target.value));
 
   return wrapper;
 };
