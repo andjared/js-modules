@@ -1,5 +1,5 @@
 import { cardsSection } from "./components/cardsSection/cardsSection.js";
-import { search } from "./components/search/search.js";
+import { header } from "./components/header/header.js";
 const dataUrl = "data.json";
 
 const getData = async (url) => {
@@ -11,7 +11,7 @@ const getData = async (url) => {
 const displayData = async () => {
   try {
     const data = await getData(dataUrl);
-    document.body.append(search({ data }), cardsSection({ data }));
+    document.body.append(header({ data }), cardsSection({ data }));
   } catch (error) {
     console.log(error);
   }
