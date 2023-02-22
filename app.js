@@ -1,20 +1,27 @@
 import { cardsSection } from "./components/cardsSection/cardsSection.js";
 import { header } from "./components/header/header.js";
-const dataUrl = "data.json";
+import { handleData } from "./handleData.js";
+import { notFound } from "./components/notFound/notFound.js";
 
-const getData = async (url) => {
-  const response = await fetch(url);
-  const data = await response.json();
-  return data;
-};
-
-const displayData = async () => {
+const displayData = async (e) => {
   try {
-    const data = await getData(dataUrl);
-    document.body.append(header({ data }), cardsSection({ data }));
+    const data = await handleData(e);
+    const gridContainer = document.querySelector(".grid-container");
+    const notFoundPage = document.querySelector(".not-found");
+
+    if (data.length) {
+      notFoundPage
+        ? notFoundPage.replaceWith(cardsSection({ data }))
+        : gridContainer
+        ? gridContainer.replaceWith(cardsSection({ data }))
+        : document.body.append(header(), cardsSection({ data }));
+    } else {
+      gridContainer?.replaceWith(notFound());
+    }
   } catch (error) {
     console.log(error);
   }
 };
 
-displayData();
+window.addEventListener("DOMContentLoaded", (e) => displayData(e));
+document.addEventListener("keyup", (e) => displayData(e));
