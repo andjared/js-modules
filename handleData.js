@@ -4,12 +4,12 @@ const getData = async () => {
   return data;
 };
 
-export const handleData = async (e) => {
+export const handleData = async ({ searchQuery }) => {
   const data = await getData();
 
-  if (e.target.id === "place") {
+  if (searchQuery) {
     const filtered = data.filter((item) =>
-      item.title.toLowerCase().includes(e.target.value.toLowerCase().trim())
+      item.title.toLowerCase().includes(searchQuery)
     );
 
     return filtered;

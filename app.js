@@ -3,9 +3,17 @@ import { header } from "./components/header/header.js";
 import { handleData } from "./handleData.js";
 import { notFound } from "./components/notFound/notFound.js";
 
-const displayData = async (e) => {
+let searchQuery = "";
+
+const handleSearch = (e) => {
+  searchQuery = e.target.value.toLowerCase().trim();
+  displayData(searchQuery);
+};
+
+const displayData = async (searchQuery) => {
   try {
-    const data = await handleData(e);
+    const data = await handleData({ searchQuery });
+
     const gridContainer = document.querySelector(".grid-container");
     const notFoundPage = document.querySelector(".not-found");
 
@@ -18,10 +26,14 @@ const displayData = async (e) => {
     } else {
       gridContainer?.replaceWith(notFound());
     }
+    //attach event listener only once and return search query
+    const searchInput = document.querySelector("#place");
+    searchInput.addEventListener("keyup", (e) => handleSearch(e), {
+      once: true,
+    });
   } catch (error) {
     console.log(error);
   }
 };
 
-window.addEventListener("DOMContentLoaded", (e) => displayData(e));
-document.addEventListener("keyup", (e) => displayData(e));
+window.addEventListener("DOMContentLoaded", displayData(searchQuery));
