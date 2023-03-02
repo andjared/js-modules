@@ -40,4 +40,4 @@ const render = (data, handleSearchEvent) => {
   document.body.append(header({ handleSearchEvent }), cardsSection({ data }));
 };
 
-window.addEventListener("DOMContentLoaded", App());
+window.addEventListener("DOMContentLoaded", App);
