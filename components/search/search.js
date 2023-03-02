@@ -3,7 +3,7 @@ import { svgIcon } from "../svgIcon/svgIcon.js";
 import styles from "./search.css" assert { type: "css" };
 document.adoptedStyleSheets = [...document.adoptedStyleSheets, styles];
 
-export const search = () => {
+export const search = ({ handleSearchEvent }) => {
   const searchWrapper = document.createElement("div");
   searchWrapper.className = "search-wrapper";
 
@@ -16,6 +16,11 @@ export const search = () => {
   placeInput.type = "text";
   placeInput.id = "place";
   placeInput.placeholder = "Search destinations";
+
+  placeInput.addEventListener("keyup", (e) =>
+    handleSearchEvent(e.target.value.toLowerCase())
+  );
+
   searchPlace.append(placeLabel, placeInput);
 
   searchWrapper.append(

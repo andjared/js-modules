@@ -1,19 +1,27 @@
-const getData = async () => {
-  const response = await fetch("data.json");
-  const data = await response.json();
-  return data;
-};
-
-export const handleData = async ({ searchQuery }) => {
-  const data = await getData();
-
-  if (searchQuery) {
-    const filtered = data.filter((item) =>
-      item.title.toLowerCase().includes(searchQuery)
-    );
-
-    return filtered;
+class PropertyController {
+  constructor(properties) {
+    this.properties = properties;
   }
 
-  return data;
-};
+  async fetchData() {
+    const response = await fetch("data.json");
+    const data = await response.json();
+    this.setData(data);
+
+    return this.properties;
+  }
+
+  setData(data) {
+    this.properties = data;
+  }
+
+  filterData(query = "") {
+    const data = this.properties.filter((item) =>
+      item.title.toLowerCase().includes(query)
+    );
+
+    return data;
+  }
+}
+
+export { PropertyController };
