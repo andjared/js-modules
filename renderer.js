@@ -9,31 +9,36 @@ class Renderer {
     this.render(data);
   }
   createElement(element) {
-    const nodeName = element.localName;
-    const children = element.childNodes;
+    const { localName, childNodes } = element;
     //skip text nodes for now
-    if (typeof nodeName !== "undefined") {
+    if (typeof localName !== "undefined") {
       const attrs = element.getAttributeNames();
       const attributes = attrs.map((attr) => {
         return { [`${attr}`]: element.getAttribute(attr) };
       });
+
       //recursively call fn for each child element
+      const node = hyperScript(
+        localName,
+        attributes,
+        [...childNodes].map((child) => this.createElement(child))
+      );
 
-      children.forEach((child) => this.createElement(child));
-
-      const node = hyperScript(nodeName, attributes, children);
-      console.log(node);
+      return node;
     }
   }
-  extractElements() {
-    const data = this.state; // array of objects
+  createVDom(data) {
+    const dom = {};
     for (let item in data) {
       const element = card({ ...data[item] });
-      this.createElement(element);
+      dom[item] = this.createElement(element);
     }
+    return dom;
   }
-  render(data) {
-    this.extractElements(data);
+  render() {
+    const data = this.state;
+    const dom = hyperScript("div", { class: "v-dom" }, this.createVDom(data));
+    console.log(dom);
     //sacuvaj referencu ka elementu
   }
 
