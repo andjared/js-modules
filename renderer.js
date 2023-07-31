@@ -23,11 +23,15 @@ class Renderer {
     }
 
     //recursively call fn for each child element
-    const node = hyperScript(
-      localName,
-      attributes,
-      [...childNodes].map((child) => this.createElement(child))
-    );
+    const children = [...childNodes].map((child) => {
+      if (!child.localName) {
+        return child.textContent;
+      } else {
+        return this.createElement(child);
+      }
+    });
+
+    const node = hyperScript(localName, attributes, children);
 
     return node;
   }
