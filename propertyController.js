@@ -1,7 +1,6 @@
 class PropertyController {
   constructor(properties) {
     this.properties = properties;
-    this.renderer = new Renderer();
   }
 
   async fetchData() {
