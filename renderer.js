@@ -8,7 +8,6 @@ class Renderer {
 
   setState(data) {
     this.state = Object.assign({}, data);
-    this.render(data);
   }
 
   createElement(element) {
@@ -45,10 +44,11 @@ class Renderer {
     return dom;
   }
 
-  render() {
-    const data = this.state;
-    const dom = hyperScript("div", { class: "v-dom" }, this.createVDom(data));
+  render(data) {
+    this.setState(data);
+    const dom = this.createVDom(this.state);
     console.log(dom);
+
     //sacuvaj referencu ka elementu
   }
 

@@ -1,5 +1,3 @@
-import { Renderer } from "./renderer.js";
-
 class PropertyController {
   constructor(properties) {
     this.properties = properties;
@@ -21,8 +19,7 @@ class PropertyController {
     const data = this.properties.filter((item) =>
       item.title.toLowerCase().includes(query)
     );
-    this.renderer.setState(data);
-    // console.log(data);
+
     return data;
   }
 }

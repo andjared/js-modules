@@ -1,7 +1,8 @@
 import { cardsSection } from "./components/cardsSection/cardsSection.js";
 import { header } from "./components/header/header.js";
-import { PropertyController } from "./propertyController.js";
 import { notFound } from "./components/notFound/notFound.js";
+import { PropertyController } from "./propertyController.js";
+import { Renderer } from "./renderer.js";
 
 const App = async () => {
   try {
@@ -9,7 +10,9 @@ const App = async () => {
     const data = await propertyCtx.fetchData();
 
     const handleSearchEvent = (query) => {
-      render(propertyCtx.filterData(query));
+      const data = propertyCtx.filterData(query);
+      const rerender = new Renderer();
+      rerender.render(data);
     };
 
     render(data, handleSearchEvent);
