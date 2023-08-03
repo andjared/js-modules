@@ -10,11 +10,20 @@ class Renderer {
     this.state = Object.assign({}, data);
   }
 
-  createVDom(data) {}
+  createVDom(data) {
+    const dom = new Map();
+
+    for (let item in data) {
+      const { id } = data[item];
+      dom.set(id, data[item]);
+    }
+
+    return dom;
+  }
 
   render(data) {
     this.setState(data);
-    console.log(data);
+    console.log(this.createVDom(data));
 
     //sacuvaj referencu ka elementu
   }
