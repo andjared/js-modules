@@ -1,29 +1,46 @@
-import { card } from "./components/card/card.js";
-import hyperScript from "./hyperscript.js";
+import { cardsSection } from "./components/cardsSection/cardsSection.js";
+import { notFound } from "./components/notFound/notFound.js";
 
 class Renderer {
   constructor() {
-    this.state = {};
+    this.state = [];
   }
 
   setState(data) {
-    this.state = Object.assign({}, data);
+    this.state = [...data];
+    this.render(this.state);
   }
 
   createVDom(data) {
     const dom = new Map();
 
-    for (let item in data) {
-      const { id } = data[item];
-      dom.set(id, data[item]);
-    }
+    data.forEach((item) => {
+      dom.set(item.id, item);
+    });
 
     return dom;
   }
 
   render(data) {
-    this.setState(data);
     console.log(this.createVDom(data));
+
+    const gridContainer = document.querySelector(".grid-container");
+    const notFoundPage = document.querySelector(".not-found");
+
+    if (!data.length) {
+      gridContainer?.replaceWith(notFound());
+      return;
+    }
+
+    if (notFoundPage) {
+      notFoundPage.replaceWith(cardsSection({ data }));
+      return;
+    }
+
+    if (gridContainer) {
+      gridContainer.replaceWith(cardsSection({ data }));
+      return;
+    }
 
     //sacuvaj referencu ka elementu
   }
