@@ -2,13 +2,13 @@ import { cardsSection } from "./components/cardsSection/cardsSection.js";
 import { notFound } from "./components/notFound/notFound.js";
 
 class Renderer {
-  constructor() {
-    this.state = [];
+  constructor(state) {
+    this.state = state;
   }
 
   setState(data) {
-    this.state = [...data];
-    this.render(this.state);
+    this.state = data;
+    return this.state;
   }
 
   createVDom(data) {
@@ -22,8 +22,6 @@ class Renderer {
   }
 
   render(data) {
-    console.log(this.createVDom(data));
-
     const gridContainer = document.querySelector(".grid-container");
     const notFoundPage = document.querySelector(".not-found");
 
@@ -35,18 +33,17 @@ class Renderer {
     if (notFoundPage) {
       notFoundPage.replaceWith(cardsSection({ data }));
       return;
-    }
-
-    if (gridContainer) {
+    } else {
       gridContainer.replaceWith(cardsSection({ data }));
       return;
     }
-
-    //sacuvaj referencu ka elementu
   }
 
-  diff() {
-    //odradi diff izmedju vdoma i dom-a
+  diff(data) {
+    this.setState(data);
+    // const dom = this.createVDom(data);
+    // console.log(dom);
+    this.render(data);
   }
 }
 

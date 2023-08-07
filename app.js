@@ -11,7 +11,7 @@ const App = async () => {
     const handleSearchEvent = (query) => {
       const data = propertyCtx.filterData(query);
       const rerender = new Renderer();
-      rerender.setState(data);
+      rerender.diff(data);
     };
 
     document.body.append(header({ handleSearchEvent }), cardsSection({ data }));
