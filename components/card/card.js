@@ -13,9 +13,11 @@ export const card = ({
   priceTotal,
   imgUrl,
   isSuperhost,
+  id,
 }) => {
   const card = document.createElement("div");
   card.className = "card";
+  card.id = id;
 
   //   append nested elements to card & pass needed properties
   card.append(
