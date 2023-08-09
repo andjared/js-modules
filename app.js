@@ -6,12 +6,13 @@ import { Renderer } from "./renderer.js";
 const App = async () => {
   try {
     const propertyCtx = new PropertyController();
+    const rerender = new Renderer();
+
     const data = await propertyCtx.fetchData();
 
     const handleSearchEvent = (query) => {
       const data = propertyCtx.filterData(query);
-      const rerender = new Renderer();
-      rerender.diff(data);
+      rerender.setState(data);
     };
 
     document.body.append(header({ handleSearchEvent }), cardsSection({ data }));
