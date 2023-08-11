@@ -14,27 +14,41 @@ class Renderer {
   render(appendElements, removeElements) {
     const gridContainer = document.querySelector(".grid-container");
     const notFoundPage = document.querySelector(".not-found");
+    const data = Array.from(appendElements.values());
 
-    //no search results
-    if (!this.state.size > 0) {
+    if (!this.state.size) {
       gridContainer?.replaceWith(notFound());
       return;
     }
 
     if (notFoundPage) {
-      notFoundPage.replaceWith(cardsSection({ data: appendElements }));
+      notFoundPage.replaceWith(cardsSection({ data }));
       return;
     }
+
+    Array.from(gridContainer.children).forEach((child) => {
+      const id = parseInt(child.id);
+
+      //remove cards that are already rendered but are not in the new state
+      if (!this.state.has(id) || removeElements.has(id)) {
+        gridContainer.removeChild(child);
+      }
+    });
+
+    appendElements.forEach((item) => {
+      if (!document.getElementById(item.id.toString())) {
+        gridContainer.append(card({ ...item }));
+      }
+    });
   }
 
   diff(data) {
-    const appendElements = [];
-    const removeElements = [];
-    console.log(appendElements);
+    const appendElements = new Map();
+    const removeElements = new Map();
 
     data.forEach((item) => {
       if (!this.state.has(item.id)) {
-        appendElements.push(item);
+        appendElements.set(item.id, item);
         this.state.set(item.id, item);
       }
     });
@@ -43,7 +57,7 @@ class Renderer {
 
     this.state.forEach((item) => {
       if (!data.includes(item)) {
-        removeElements.push(item);
+        removeElements.set(item.id, item);
         this.state.delete(item.id);
       }
     });
