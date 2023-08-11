@@ -12,18 +12,27 @@ class Renderer {
   }
 
   render(appendElements, removeElements) {
-    console.log(appendElements, "append");
-    console.log(removeElements, "remove");
     const gridContainer = document.querySelector(".grid-container");
     const notFoundPage = document.querySelector(".not-found");
+
+    //no search results
+    if (!this.state.size > 0) {
+      gridContainer?.replaceWith(notFound());
+      return;
+    }
+
+    if (notFoundPage) {
+      notFoundPage.replaceWith(cardsSection({ data: appendElements }));
+      return;
+    }
   }
 
   diff(data) {
     const appendElements = [];
     const removeElements = [];
+    console.log(appendElements);
 
     data.forEach((item) => {
-      console.log(this.state.has(item.id));
       if (!this.state.has(item.id)) {
         appendElements.push(item);
         this.state.set(item.id, item);
