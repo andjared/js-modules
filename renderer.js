@@ -4,19 +4,20 @@ import { card } from "./components/card/card.js";
 
 class Renderer {
   constructor() {
-    this.state = new Map();
+    this.state = [];
   }
 
   setState(data) {
-    this.diff(data);
+    this.render(data);
   }
 
-  render() {
+  render(data) {
     const gridContainer = document.querySelector(".grid-container");
     const notFoundPage = document.querySelector(".not-found");
-    const data = Array.from(this.state.values());
+    //iterate over array that has bigger length
+    const iterator = data.length > this.state.length ? data : this.state;
 
-    if (!this.state.size) {
+    if (!data.length) {
       gridContainer?.replaceWith(notFound());
       return;
     }
@@ -26,38 +27,14 @@ class Renderer {
       return;
     }
 
-    //remove cards that are already rendered but are not in the new state
-    Array.from(gridContainer.children).forEach((child) => {
-      const id = parseInt(child.id);
-      if (!this.state.has(id)) {
-        gridContainer.removeChild(child);
-      }
-    });
+    console.log(this.state, "state");
+    console.log(iterator, "iterator");
+    console.log(data, "data");
 
-    //append child if it doesnt already exists in dom
-    this.state.forEach((item) => {
-      if (!document.getElementById(item.id.toString())) {
-        gridContainer.append(card({ ...item }));
-      }
-    });
-  }
-
-  diff(data) {
-    //add elements from data that are not already in state
-    data.forEach((item) => {
-      if (!this.state.has(item.id)) {
-        this.state.set(item.id, item);
-      }
-    });
-
-    //remove elements from state that are not in data
-    this.state.forEach((item) => {
-      if (!data.includes(item)) {
-        this.state.delete(item.id);
-      }
-    });
-
-    this.render();
+    for (let i = 0; i < iterator.length; i++) {
+      console.log(data[i]);
+      console.log(this.state[i]);
+    }
 
     return this.state;
   }
