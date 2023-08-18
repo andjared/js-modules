@@ -15,28 +15,35 @@ class Renderer {
     const gridContainer = document.querySelector(".grid-container");
     const notFoundPage = document.querySelector(".not-found");
     //iterate over array that has bigger length
-    const iterator = data.length > this.state.length ? data : this.state;
-
-    if (!data.length) {
-      gridContainer?.replaceWith(notFound());
-      return;
-    }
+    const iterator =
+      data.length > this.state.length ? data.length : this.state.length;
 
     if (notFoundPage) {
-      notFoundPage.replaceWith(cardsSection({ data }));
-      return;
+      gridContainer.removeChild(notFoundPage);
     }
 
-    console.log(this.state, "state");
-    console.log(iterator, "iterator");
-    console.log(data, "data");
-
-    for (let i = 0; i < iterator.length; i++) {
-      console.log(data[i]);
-      console.log(this.state[i]);
+    if (!data.length) {
+      gridContainer.append(notFound());
     }
 
-    return this.state;
+    for (let i = 0; i < iterator; i++) {
+      if (i < data.length && !this.state.find((el) => el.id === data[i].id)) {
+        gridContainer?.append(card({ ...data[i] }));
+      }
+
+      if (i >= this.state.length) {
+        continue;
+      }
+
+      if (data.find((el) => el.id === this.state[i].id)) {
+        continue;
+      } else {
+        const element = document.getElementById(this.state[i].id);
+        gridContainer.removeChild(element);
+      }
+    }
+
+    this.state = data;
   }
 }
 
